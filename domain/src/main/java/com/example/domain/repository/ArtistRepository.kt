@@ -4,6 +4,6 @@ import com.example.domain.entity.Artist
 
 interface ArtistRepository {
 
-    fun getArtistList(): List<Artist>
+    suspend fun getArtistList(): List<Artist>
 
 }

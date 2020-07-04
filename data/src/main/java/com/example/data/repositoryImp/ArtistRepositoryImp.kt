@@ -8,7 +8,7 @@ import javax.inject.Inject
 class ArtistRepositoryImp @Inject constructor(val artist: Artist, val context: Context) :
     ArtistRepository {
 
-    override fun getArtistList(): List<Artist> {
+    override suspend fun getArtistList(): List<Artist> {
         TODO("Not yet implemented")
     }
 }

@@ -5,5 +5,5 @@ class Track {
     private lateinit var name: String
     private lateinit var nameArtist: String
     private lateinit var nameTrack: String
-    private var TrackLength: Long = 0
+    private var trackLength: Long = 0
 }

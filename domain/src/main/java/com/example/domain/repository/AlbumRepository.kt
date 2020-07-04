@@ -4,6 +4,6 @@ import com.example.domain.entity.Album
 
 interface AlbumRepository {
 
-    fun getAlbumList(): List<Album>
+    suspend fun getAlbumList(): List<Album>
 
 }
