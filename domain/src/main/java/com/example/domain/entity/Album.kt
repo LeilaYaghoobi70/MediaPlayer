@@ -1,7 +1,9 @@
 package com.example.domain.entity
 
-class Album {
-    private lateinit var id:String
-    private lateinit var name:String
-    private lateinit var artistName:String
-}
+data class Album(
+    var id: String,
+    var name: String,
+    var artistName: String,
+    var artistId: String,
+    var albumArt: String
+)

@@ -13,7 +13,7 @@ import dagger.Provides
 class RepositoryModule {
 
     @Provides
-    fun provideRepositoryAklbum(albumRepositoryImp: AlbumRepositoryImp): AlbumRepository =
+    fun provideRepositoryAlbum(albumRepositoryImp: AlbumRepositoryImp): AlbumRepository =
         albumRepositoryImp
 
     @Provides
