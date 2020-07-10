@@ -17,7 +17,8 @@ class TrackRepositoryImp @Inject constructor(val context: Context) : TrackReposi
         val cursor = context.contentResolver.query(uri, null, null, null, null)
         try {
             cursor?.let {
-                while (cursor!!.isAfterLast) {
+                cursor.moveToFirst()
+                while (!cursor!!.isAfterLast) {
                     val trackId =
                         it.getString(it.getColumnIndex(MediaStore.Audio.Media._ID))
                     val trackName =

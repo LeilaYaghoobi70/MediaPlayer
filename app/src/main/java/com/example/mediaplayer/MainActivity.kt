@@ -20,12 +20,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         val navigationFragment = findNavController(R.id.nav_host_fragment_container)
-        val appBarConfiguration= AppBarConfiguration(setOf(R.id.Albums,R.id.Artists,R.id.Tracks))
-        setupActionBarWithNavController(navigationFragment,appBarConfiguration)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.albumsFragment,
+                R.id.artistsFragment,
+                R.id.trackFragment
+            )
+        )
+        setupActionBarWithNavController(navigationFragment, appBarConfiguration)
         bottomNavigationView.setupWithNavController(navigationFragment)
 
     }
-
 }
 
 

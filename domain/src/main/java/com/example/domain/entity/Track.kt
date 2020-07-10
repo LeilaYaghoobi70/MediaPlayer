@@ -1,9 +1,9 @@
 package com.example.domain.entity
 
 class Track(
-    private  var id: String,
-    private  var displayName: String,
-    private  var artistId: String,
-    private  var albumId: String,
-    private var trackLength: Long = 0
+    var id: String,
+    var displayName: String,
+    var artistId: String,
+    var albumId: String,
+    var trackLength: Long = 0
 )

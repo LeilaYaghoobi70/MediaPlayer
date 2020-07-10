@@ -1,5 +1,6 @@
 package com.example.mediaplayer.di.modules
 
+import android.app.Application
 import android.content.Context
 import dagger.Module
 import dagger.Provides
@@ -7,7 +8,7 @@ import dagger.Provides
 @Module
 class AppModule {
 
-    @Provides
-    fun provideContext(context: Context) = context
+   @Provides
+    fun provideContext(application: Application) =application.applicationContext
 
 }
