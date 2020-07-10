@@ -1,20 +1,30 @@
-package com.example.data.repositoryImp
+package com.example.mediaplayer.repositoryImp
 
 import android.content.Context
-import android.database.Cursor
 import android.provider.MediaStore
-import com.example.domain.entity.Album
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import androidx.test.rule.GrantPermissionRule
+import com.example.domain.entity.Artist
 import com.example.domain.entity.Track
-import com.example.domain.trackListSort.TracksSort
-import com.example.domain.repository.TrackRepository
-import javax.inject.Inject
+import org.junit.Rule
+import org.junit.Test
+import org.junit.runner.RunWith
 
-class TrackRepositoryImp @Inject constructor(val context: Context) : TrackRepository {
+@RunWith(AndroidJUnit4ClassRunner::class)
+class TrackRepositoryImpTest {
 
-    override suspend fun getTrackList(tracksSort: TracksSort): List<Track> {
+    @get:Rule
+    val mGrantPermissionRule = GrantPermissionRule.grant("android.permission.READ_EXTERNAL_STORAGE")
+
+    @Test
+    fun getTrack() {
+
+        val context = ApplicationProvider.getApplicationContext<Context>()
         val trackList = ArrayList<Track>()
         val uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         val cursor = context.contentResolver.query(uri, null, null, null, null)
+
         try {
             cursor?.let {
                 while (cursor!!.isAfterLast) {
@@ -43,6 +53,7 @@ class TrackRepositoryImp @Inject constructor(val context: Context) : TrackReposi
         } finally {
             cursor?.close()
         }
-        return trackList
     }
 }
+
+

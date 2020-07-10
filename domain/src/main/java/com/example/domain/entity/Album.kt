@@ -5,5 +5,5 @@ data class Album(
     var name: String,
     var artistName: String,
     var artistId: String,
-    var albumArt: String
+    var albumArt: String?
 )

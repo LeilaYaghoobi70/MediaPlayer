@@ -1,33 +1,31 @@
-package com.example.data.repositoryImp
+package com.example.mediaplayer.repositoryImp
 
 import android.content.Context
-import android.database.Cursor
 import android.provider.MediaStore
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import androidx.test.rule.GrantPermissionRule
 import com.example.domain.entity.Album
-import com.example.domain.repository.AlbumRepository
-import javax.inject.Inject
+import org.junit.Rule
+import org.junit.Test
+import org.junit.runner.RunWith
 
+@RunWith(AndroidJUnit4ClassRunner::class)
+class AlbumRepositoryImpTest {
+    @Rule
+    @JvmField
+    var mGrantPermissionRule = GrantPermissionRule.grant(
+        "android.permission.READ_EXTERNAL_STORAGE"
+    )
 
-class AlbumRepositoryImp @Inject constructor(private val context: Context) :
-    AlbumRepository {
-    
-    override suspend fun getAlbumList(): List<Album> {
-        val albumList: ArrayList<Album> = ArrayList()
+    @Test
+    fun getAlbum() {
 
-         val cursor = context.contentResolver.query(
-            MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI,
-            arrayOf(
-                MediaStore.Audio.Albums.ALBUM_ID,
-                MediaStore.Audio.Albums.ARTIST,
-                MediaStore.Audio.Albums.ARTIST_ID,
-                MediaStore.Audio.Albums.ALBUM_ART,
-                MediaStore.Audio.Albums.ALBUM
-            )
-            ,
-            null,
-            null,
-            null
-        )
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val albumList = ArrayList<Album>()
+        val contentResolver = context.contentResolver
+        val uri = MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI;
+        val cursor = contentResolver.query(uri, null, null, null, null)
 
         try {
             cursor?.let {
@@ -50,10 +48,6 @@ class AlbumRepositoryImp @Inject constructor(private val context: Context) :
         } finally {
             cursor?.close()
         }
-        return albumList
     }
+
 }
-
-
-
-
