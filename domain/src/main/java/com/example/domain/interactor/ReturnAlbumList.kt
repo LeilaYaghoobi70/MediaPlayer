@@ -10,4 +10,5 @@ class ReturnAlbumList @Inject constructor(private val albumRepository: AlbumRepo
     suspend fun getAlbumList() = withContext(Dispatchers.IO) {
         return@withContext albumRepository.getAlbumList()
     }
+
 }

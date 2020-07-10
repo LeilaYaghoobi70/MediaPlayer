@@ -12,8 +12,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class TracksViewModel @Inject constructor(private val trackRepository: TrackRepository) :
-    ViewModel() {
+class TracksViewModel @Inject constructor(
+    private val trackRepository: TrackRepository
+) : ViewModel() {
 
     val tracksList = ArrayList<Track>()
 

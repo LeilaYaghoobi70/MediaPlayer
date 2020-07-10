@@ -1,7 +1,7 @@
 package com.example.mediaplayer.di.component
 
 import android.app.Application
-import com.example.mediaplayer.BaseApplication
+import com.example.mediaplayer.App
 import com.example.mediaplayer.di.modules.AppModule
 import com.example.mediaplayer.di.modules.BindingModule
 import com.example.mediaplayer.di.modules.RepositoryModule
@@ -11,14 +11,12 @@ import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 
 @Component(
-    modules = arrayOf(
-        AndroidInjectionModule::class,
-        BindingModule::class,
-        AppModule::class,
+    modules = [
+        AndroidInjectionModule::class, BindingModule::class, AppModule::class,
         RepositoryModule::class
-    )
+    ]
 )
-interface AppComponent : AndroidInjector<BaseApplication> {
+interface AppComponent : AndroidInjector<App> {
 
     @Component.Factory
     interface Create {

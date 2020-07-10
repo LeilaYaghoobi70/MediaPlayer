@@ -1,6 +1,6 @@
 package com.example.domain.entity
 
-class Track(
+data class Track(
     var id: String,
     var displayName: String,
     var artistId: String,
